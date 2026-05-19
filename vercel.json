@@ -1,0 +1,7 @@
+{
+  "$schema": "https://openapi.vercel.sh/vercel.json",
+  "buildCommand": "yarn build:vercel",
+  "outputDirectory": "demo/dist",
+  "installCommand": "yarn install",
+  "framework": null
+}

@@ -18,12 +18,14 @@
   ],
   "scripts": {
     "clean": "rimraf demo/src/lib",
-    "build:js": "vite build",
+    "build:js": "vite build --config vite.lib.config.ts",
     "build:types": "tsc --emitDeclarationOnly --declarationDir demo/src/lib/types && dts-bundle-generator -o demo/src/lib/index.d.ts demo/src/lib/types/index.d.ts && rimraf demo/src/lib/types",
     "build:docs": "node scripts/generate-docs.mjs",
     "build": "yarn clean && yarn build:js && yarn build:types && yarn build:docs",
+    "build:demo": "vite build",
+    "build:vercel": "yarn build && yarn build:demo",
     "dev": "vite",
-    "preview": "vite preview"
+    "preview": "vite preview --outDir dist"
   },
   "devDependencies": {
     "dts-bundle-generator": "^9.5.1",
