@@ -112,6 +112,7 @@ template.innerHTML = `
   </style>
   <button part="button" aria-live="polite">
     <slot></slot>
+    
     <span class="spinner hidden" aria-hidden="true"></span>
   </button>
 `;

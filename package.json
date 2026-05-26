@@ -18,16 +18,20 @@
   ],
   "scripts": {
     "clean": "rimraf demo/src/lib",
+    "sync:components": "node scripts/sync-components.mjs",
+    "prebuild:js": "yarn sync:components",
     "build:js": "vite build --config vite.lib.config.ts",
     "build:types": "tsc --emitDeclarationOnly --declarationDir demo/src/lib/types && dts-bundle-generator -o demo/src/lib/index.d.ts demo/src/lib/types/index.d.ts && rimraf demo/src/lib/types",
     "build:docs": "node scripts/generate-docs.mjs",
+    "prebuild:docs": "yarn sync:components",
     "build": "yarn clean && yarn build:js && yarn build:types && yarn build:docs",
     "build:demo": "vite build",
     "build:vercel": "yarn build && yarn build:demo",
     "dev": "vite",
-    "preview": "vite preview --outDir dist"
+    "preview": "vite preview"
   },
   "devDependencies": {
+    "@types/node": "^25.9.1",
     "dts-bundle-generator": "^9.5.1",
     "esbuild": "^0.28.0",
     "rimraf": "^6.1.3",
